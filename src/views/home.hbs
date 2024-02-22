@@ -1,0 +1,15 @@
+<main class="home">
+  <h1>{{ title }}</h1>
+  <article class="content">
+    {{{ content }}}
+  </article>
+  <article class="user">
+    <h2>About {{ userData.firstname }} {{ userData.lastname }}</h2>
+    <p>{{ userData.bio }}</p>
+    <h3>Interests</h3>
+    <ul>
+      {{#each userData.interests as |interest|}}
+        <li>{{ interest.name }}</li>
+      {{/each}}
+  </article>
+</main>

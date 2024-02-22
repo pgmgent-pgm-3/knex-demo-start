@@ -1,0 +1,13 @@
+<nav>
+  <div class="logo">
+    Knex Demo
+  </div>
+  
+  <ul>
+    {{#each menuItems}}
+      <li>
+        <a href="{{url}}" target="{{ target }}">{{label}}</a>
+      </li>
+    {{/each}}
+  </ul>
+</nav>
