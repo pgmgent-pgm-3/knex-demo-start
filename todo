@@ -1,0 +1,14 @@
+# TODO - Maak Ada Lovelace dynamisch
+
+- Maak een users-tabel aan, met onderstaande velden (migration)
+    *npx knex migrate:make create_users_table en npx knex migrate:latest*
+    - id
+    - firstname
+    - lastname
+    - bio
+- Maak een overeenkomstige model aan "User"
+    - src/models/User.js
+- Steek een aantal users in de database, via DB Browser for SQLite (vergeet niet te saven)
+- Render de gegevens van de eerste user, als je de homepagina bezoekt
+
+
