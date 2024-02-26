@@ -5,11 +5,14 @@
  */
 
 // import menuItems from "../data/menu.js";
-import userData from "../data/user.js";
+// import userData from "../data/user.js";
 import NavigationItem from "../models/NavigationItem.js";
+import User from "../models/User.js";
 
 export const home = async (req, res) => {
   const menuItems = await NavigationItem.query();
+  const userData = await User.query().findById(1);
+  console.log(userData);
 
   const pageData = {
     title: "Home",

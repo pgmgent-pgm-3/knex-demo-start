@@ -6,9 +6,9 @@
     - firstname
     - lastname
     - bio
+- Steek een aantal users in de database, via DB Browser for SQLite (vergeet niet te saven)
 - Maak een overeenkomstige model aan "User"
     - src/models/User.js
-- Steek een aantal users in de database, via DB Browser for SQLite (vergeet niet te saven)
 - Render de gegevens van de eerste user, als je de homepagina bezoekt
 
 
