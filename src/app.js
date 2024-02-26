@@ -43,7 +43,7 @@ app.set("views", VIEWS_PATH);
  */
 app.get("/", home);
 app.get("/about-us", about);
-app.get("/contact", contact);
+app.get("/contact-us", contact);
 
 /**
  * API interest routes.

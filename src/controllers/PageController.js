@@ -4,10 +4,13 @@
  * A simple page is a page that does not contain many business logic.
  */
 
-import menuItems from "../data/menu.js";
+// import menuItems from "../data/menu.js";
 import userData from "../data/user.js";
+import NavigationItem from "../models/NavigationItem.js";
 
 export const home = async (req, res) => {
+  const menuItems = await NavigationItem.query();
+
   const pageData = {
     title: "Home",
     content: `
@@ -24,6 +27,8 @@ export const home = async (req, res) => {
 };
 
 export const about = async (req, res) => {
+  const menuItems = await NavigationItem.query();
+
   const pageData = {
     title: "About Us",
     content: `
@@ -39,6 +44,8 @@ export const about = async (req, res) => {
 };
 
 export const contact = async (req, res) => {
+  const menuItems = await NavigationItem.query();
+
   const pageData = {
     title: "Contact",
     content: `
