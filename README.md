@@ -42,5 +42,5 @@ Every time you run the seed, the data will be added to the database again, so be
 
 ## Running the server
 
-You can then run the server using `npm run start:dev`, and access the API at `http://localhost:3000`.
+You can then run the server using `npm run start:dev`, and access the application at `http://localhost:3000`.
 
