@@ -2,6 +2,7 @@ import express from "express";
 import { create } from "express-handlebars";
 import { PORT, VIEWS_PATH } from "./consts.js";
 import HandlebarsHelpers from "./lib/HandlebarsHelpers.js";
+import bodyParser from "body-parser";
 
 import { home, about, contact } from "./controllers/PageController.js";
 import {
@@ -15,6 +16,16 @@ import { getUsers } from "./controllers/api/UserController.js";
 
 const app = express();
 app.use(express.static("public"));
+
+/**
+ * Body Parser,
+ * to parse incoming request bodies
+ * available under the req.body property.
+ * This is useful for parsing JSON and URL encoded data.
+ *
+ * */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * Handlebars Init
