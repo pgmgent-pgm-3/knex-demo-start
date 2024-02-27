@@ -62,7 +62,9 @@ export const createInterest = async (req, res, next) => {
  * Update an interest
  *
  */
-export const updateInterest = async (req, res, next) => {};
+export const updateInterest = async (req, res, next) => {
+  res.send(req.body);
+};
 
 /**
  * Delete an interest
@@ -71,6 +73,18 @@ export const deleteInterest = async (req, res, next) => {
   const id = req.params.id;
 
   // todo 1: delete the record with id: id
+  const deleted = await Interest.query().deleteById(id);
+
+  if (deleted) {
+    res.json({
+      message: "Interest has been deleted",
+    });
+    return;
+  }
+
+  res.status(404).json({
+    message: "Interest not found",
+  });
 
   // todo 2: return a response
 };
