@@ -32,17 +32,25 @@ export const getInterests = async (req, res, next) => {
  * Create a new interest
  */
 export const createInterest = async (req, res, next) => {
-  // test
-  // res.send(req.body);
-
+  // get interest from the request body
   const interest = req.body.interest;
+
+  // validate the interest
   if (!interest) {
     res.status(400).json({
       message: "Interest is required",
     });
   }
 
-  res.send("ok");
+  // create the interest
+  const insInterest = await Interest.query().insert({
+    name: interest,
+  });
+
+  res.json({
+    message: "Interest created",
+    interest: insInterest,
+  });
 };
 
 /**
