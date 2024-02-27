@@ -21,7 +21,7 @@ export default class NavigationItem extends Model {
         id: { type: "integer" },
         title: { type: "string" },
         slug: { type: "string" },
-        content: { type: "text" },
+        content: { type: "string" },
         is_homepage: { type: "boolean" },
       },
     };

@@ -21,7 +21,7 @@ export default class NavigationItem extends Model {
         id: { type: "integer" },
         firstname: { type: "string", minLength: 1, maxLength: 255 },
         lastname: { type: "string", minLength: 1, maxLength: 255 },
-        bio: { type: "text" },
+        bio: { type: "string" },
       },
     };
   }
