@@ -2,7 +2,8 @@ const tableName = "interests";
 
 const seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex(tableName).del();
+  await knex(tableName).truncate();
+
   await knex(tableName).insert([
     { name: "Music" },
     { name: "Sports" },
