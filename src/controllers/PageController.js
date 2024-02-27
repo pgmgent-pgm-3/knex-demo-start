@@ -26,10 +26,17 @@ export const home = async (req, res) => {
 export const page = async (req, res) => {
   // get the slug from the request parameters, if it is not present, use "/"
   const slug = req.params.slug || "/";
+  console.log(slug); // favicon.ico
 
   // get the menu items and the page data
   const menuItems = await NavigationItem.query();
   const pageData = await Page.query().findOne({ slug });
+
+  // if the page data is not found, render the 404 page
+  if (!pageData) {
+    res.send("404 - Page not found");
+    return;
+  }
 
   // alternative way to get the homepage data
   // you could choose to use this method, however, it is not necessarely better than the one above

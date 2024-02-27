@@ -45,7 +45,7 @@ app.set("views", VIEWS_PATH);
 // app.get("/about-us", about);
 // app.get("/contact-us", contact);
 app.get("/", page);
-app.get("/:slug", page);
+app.get("/:slug", page); //
 
 /**
  * API interest routes.
