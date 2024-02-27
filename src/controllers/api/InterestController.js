@@ -67,4 +67,10 @@ export const updateInterest = async (req, res, next) => {};
 /**
  * Delete an interest
  */
-export const deleteInterest = async (req, res, next) => {};
+export const deleteInterest = async (req, res, next) => {
+    const id = req.param.id;
+
+    // todo: delete from database, via Model
+
+    // todo 2: return a response
+};
