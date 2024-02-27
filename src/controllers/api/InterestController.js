@@ -31,7 +31,19 @@ export const getInterests = async (req, res, next) => {
 /**
  * Create a new interest
  */
-export const createInterest = async (req, res, next) => {};
+export const createInterest = async (req, res, next) => {
+  // test
+  // res.send(req.body);
+
+  const interest = req.body.interest;
+  if (!interest) {
+    res.status(400).json({
+      message: "Interest is required",
+    });
+  }
+
+  res.send("ok");
+};
 
 /**
  * Update an interest
