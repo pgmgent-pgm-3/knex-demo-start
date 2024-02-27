@@ -45,6 +45,7 @@ export const createInterest = async (req, res, next) => {
     res.status(400).json({
       message: "name is required, for inserting an interest",
     });
+    return;
   }
 
   // create the interest
@@ -63,7 +64,44 @@ export const createInterest = async (req, res, next) => {
  *
  */
 export const updateInterest = async (req, res, next) => {
-  res.send(req.body);
+  // step 1: validate if id & name are present in the request body
+  if (!req.body.id || !req.body.name) {
+    res.status(400).json({
+      message: "id and name are required",
+    });
+    return;
+  }
+
+  // step 2: check if the interest with id exists
+  const id = req.body.id;
+  const interest = await Interest.query().findById(id);
+  if (!interest) {
+    res.status(404).json({
+      message: "Interest not found",
+    });
+    return;
+  }
+
+  // step 3: check if no other interest with the same name exists
+  const name = req.body.name;
+  const existingInterest = await Interest.query().where("name", name).first();
+  if (existingInterest) {
+    res.status(400).json({
+      message: "Interest with the same name already exists",
+    });
+    return;
+  }
+
+  // step 4: update the interest with id
+  const updatedInterest = await Interest.query().patchAndFetchById(id, {
+    name,
+  });
+
+  // todo 5: return the updated interest
+  res.json({
+    message: "Interest has been updated",
+    interest: updatedInterest,
+  });
 };
 
 /**
@@ -85,6 +123,4 @@ export const deleteInterest = async (req, res, next) => {
   res.status(404).json({
     message: "Interest not found",
   });
-
-  // todo 2: return a response
 };
