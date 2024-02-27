@@ -61,7 +61,6 @@ export const createInterest = async (req, res, next) => {
 
 /**
  * Update an interest
- *
  */
 export const updateInterest = async (req, res, next) => {
   // step 1: validate if id & name are present in the request body
