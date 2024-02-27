@@ -4,7 +4,7 @@ import { PORT, VIEWS_PATH } from "./consts.js";
 import HandlebarsHelpers from "./lib/HandlebarsHelpers.js";
 import bodyParser from "body-parser";
 
-import { home, about, contact } from "./controllers/PageController.js";
+import { home, page, about, contact } from "./controllers/PageController.js";
 import {
   getInterest,
   getInterests,
