@@ -42,8 +42,9 @@ app.set("views", VIEWS_PATH);
  * App routes for pages that will be rendered in the browser.
  */
 app.get("/", home);
-app.get("/about-us", about);
-app.get("/contact-us", contact);
+// app.get("/about-us", about);
+// app.get("/contact-us", contact);
+app.get("/:slug", page);
 
 /**
  * API interest routes.

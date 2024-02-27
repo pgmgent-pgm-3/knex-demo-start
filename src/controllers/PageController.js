@@ -8,23 +8,27 @@
 // import userData from "../data/user.js";
 import NavigationItem from "../models/NavigationItem.js";
 import User from "../models/User.js";
+import Page from "../models/Page.js";
 
 export const home = async (req, res) => {
   const menuItems = await NavigationItem.query();
   const userData = await User.query().findById(1);
-  console.log(userData);
-
-  const pageData = {
-    title: "Home",
-    content: `
-      <p>Welcome to our website. We are a small company that does great things!</p>
-      <p>Feel free to browse our site and learn more about us.</p>
-    `,
-  };
+  // const pageData = await Page.query().where("is_homepage", true).first();
+  const pageData = await Page.query().findOne({ slug: "/" });
 
   res.render("home", {
     ...pageData,
     userData,
+    menuItems,
+  });
+};
+
+export const page = async (req, res) => {
+  const menuItems = await NavigationItem.query();
+  const pageData = await Page; // todo
+
+  res.render("default", {
+    ...pageData,
     menuItems,
   });
 };
