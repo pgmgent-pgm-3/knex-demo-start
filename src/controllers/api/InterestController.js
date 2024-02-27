@@ -68,9 +68,9 @@ export const updateInterest = async (req, res, next) => {};
  * Delete an interest
  */
 export const deleteInterest = async (req, res, next) => {
-  const id = req.param.id;
+  const id = req.params.id;
 
-  // todo: delete from database, via Model
+  // todo 1: delete the record with id: id
 
   // todo 2: return a response
 };
