@@ -4,8 +4,7 @@
  * A simple page is a page that does not contain many business logic.
  */
 
-// import menuItems from "../data/menu.js";
-// import userData from "../data/user.js";
+// import the models
 import NavigationItem from "../models/NavigationItem.js";
 import User from "../models/User.js";
 import Page from "../models/Page.js";
