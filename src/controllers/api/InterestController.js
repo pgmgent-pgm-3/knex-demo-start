@@ -30,6 +30,14 @@ export const getInterests = async (req, res, next) => {
 
 /**
  * Create a new interest
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ *
+ * Request body should contain a name, for example
+ * {
+ *  "name": "Cycling"
+ * }
  */
 export const createInterest = async (req, res, next) => {
   // get interest from the request body
