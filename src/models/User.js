@@ -21,7 +21,7 @@ export default class User extends Model {
         id: { type: "integer" },
         firstname: { type: "string", minLength: 1, maxLength: 255 },
         lastname: { type: "string", minLength: 1, maxLength: 255 },
-        bio: { type: "string" },
+        bio: { type: "string" }, // not "text" because that is not a valid data type in JSON Schema
       },
     };
   }

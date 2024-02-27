@@ -21,7 +21,7 @@ export default class NavigationItem extends Model {
         id: { type: "integer" },
         title: { type: "string" },
         slug: { type: "string" },
-        content: { type: "string" },
+        content: { type: "string" }, // not "text" because that is not a valid data type in JSON Schema
         is_homepage: { type: "boolean" },
       },
     };
