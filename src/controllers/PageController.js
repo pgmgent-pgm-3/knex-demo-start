@@ -29,6 +29,9 @@ export const page = async (req, res) => {
   const menuItems = await NavigationItem.query();
   const pageData = await Page.query().findOne({ slug });
 
+  // alternative way to get the homepage data
+  // you could choose to use this method, however, it is not necessarely better than the one above
+  // the one above is more explicit and easier to understand, this one is more concise
   if (pageData.is_homepage) {
     const userData = await User.query().findById(1);
     res.render("home", {
