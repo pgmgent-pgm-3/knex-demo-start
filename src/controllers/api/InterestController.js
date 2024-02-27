@@ -33,10 +33,10 @@ export const getInterests = async (req, res, next) => {
  */
 export const createInterest = async (req, res, next) => {
   // get interest from the request body
-  const interest = req.body.interest;
+  const name = req.body.name;
 
   // validate the interest
-  if (!interest) {
+  if (!name) {
     res.status(400).json({
       message: "Interest is required",
     });
@@ -44,7 +44,7 @@ export const createInterest = async (req, res, next) => {
 
   // create the interest
   const insInterest = await Interest.query().insert({
-    name: interest,
+    name,
   });
 
   res.json({
