@@ -48,13 +48,13 @@ export const createInterest = async (req, res, next) => {
   }
 
   // create the interest
-  const insInterest = await Interest.query().insert({
+  const insertedInterest = await Interest.query().insert({
     name,
   });
 
   res.json({
     message: "Interest has been created",
-    interest: insInterest,
+    interest: insertedInterest,
   });
 };
 
@@ -68,9 +68,9 @@ export const updateInterest = async (req, res, next) => {};
  * Delete an interest
  */
 export const deleteInterest = async (req, res, next) => {
-    const id = req.param.id;
+  const id = req.param.id;
 
-    // todo: delete from database, via Model
+  // todo: delete from database, via Model
 
-    // todo 2: return a response
+  // todo 2: return a response
 };
