@@ -1,6 +1,7 @@
 /**
  * Interests API Controller
  */
+import Interest from "../../models/Interest.js";
 
 /**
  * Get a single interest
@@ -11,10 +12,11 @@ export const getInterest = async (req, res, next) => {};
  * Get all interests
  */
 export const getInterests = async (req, res, next) => {
-  // todo: return all interests, from the database
+  // todo: return all interests, from the databasex
+  const interests = await Interest.query();
 
   res.status(200).json({
-    interests: [],
+    interests,
   });
 };
 
