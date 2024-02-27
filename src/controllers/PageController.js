@@ -24,11 +24,20 @@ export const home = async (req, res) => {
 };
 
 export const page = async (req, res) => {
-  const slug = req.params.slug;
+  const slug = req.params.slug || "/";
 
   const menuItems = await NavigationItem.query();
   const pageData = await Page.query().findOne({ slug });
-  console.log(pageData);
+
+  if (pageData.is_homepage) {
+    const userData = await User.query().findById(1);
+    res.render("home", {
+      ...pageData,
+      userData,
+      menuItems,
+    });
+    return;
+  }
 
   res.render("default", {
     ...pageData,
