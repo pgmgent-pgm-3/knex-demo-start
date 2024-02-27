@@ -43,7 +43,7 @@ export const createInterest = async (req, res, next) => {
   // validate the interest
   if (!name) {
     res.status(400).json({
-      message: "Interest is required",
+      message: "name is required, for inserting an interest",
     });
   }
 
@@ -53,7 +53,7 @@ export const createInterest = async (req, res, next) => {
   });
 
   res.json({
-    message: "Interest created",
+    message: "Interest has been created",
     interest: insInterest,
   });
 };
