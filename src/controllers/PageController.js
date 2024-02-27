@@ -34,7 +34,8 @@ export const page = async (req, res) => {
 
   // if the page data is not found, render the 404 page
   if (!pageData) {
-    res.send("404 - Page not found");
+    // send statuscode 404
+    res.status(404).send("Page not found");
     return;
   }
 
