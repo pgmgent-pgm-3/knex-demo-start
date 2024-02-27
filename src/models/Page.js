@@ -4,7 +4,7 @@ import { Model } from "objection";
 // instantiate the model
 Model.knex(knex);
 
-export default class NavigationItem extends Model {
+export default class Page extends Model {
   static get tableName() {
     return "pages";
   }

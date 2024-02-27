@@ -1,8 +1,11 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 const config = {
   development: {
     client: "sqlite3",
     connection: {
-      filename: "./knex-demo.sqlite3", // the file that will store the database
+      filename: process.env.DATABASE_NAME || "knex-demo.sqlite3",
     },
     useNullAsDefault: true,
     migrations: {
