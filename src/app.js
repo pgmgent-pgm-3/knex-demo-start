@@ -41,11 +41,13 @@ app.set("views", VIEWS_PATH);
 /**
  * App routes for pages that will be rendered in the browser.
  */
+
 // app.get("/", home);
+app.get("/", page);
+
 // app.get("/about-us", about);
 // app.get("/contact-us", contact);
-app.get("/", page);
-app.get("/:slug", page); //
+app.get("/:slug", page); // shortcut for all pages, except the homepage
 
 /**
  * API interest routes.
