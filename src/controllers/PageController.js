@@ -25,7 +25,6 @@ export const home = async (req, res) => {
 export const page = async (req, res) => {
   // get the slug from the request parameters, if it is not present, use "/"
   const slug = req.params.slug || "/";
-  console.log(slug); // favicon.ico
 
   // get the menu items and the page data
   const menuItems = await NavigationItem.query();
