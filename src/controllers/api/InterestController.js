@@ -1,29 +1,81 @@
 /**
  * Interests API Controller
  */
+import Interest from "../../models/Interest.js";
 
 /**
  * Get a single interest
  */
-export const getInterest = async (req, res, next) => {}
+export const getInterest = async (req, res, next) => {
+  //const { id } = req.params;
+  const id = req.params.id;
+
+  const interest = await Interest.query().findById(id);
+  if (!interest) {
+    res.status(404).json({ message: "Interest not found" });
+    return;
+  }
+
+  res.json(interest);
+};
 
 /**
  * Get all interests
  */
-export const getInterests = async (req, res, next) => {}
+export const getInterests = async (req, res, next) => {
+  const interests = await Interest.query().orderBy("priority", "DESC");
+  res.json(interests);
+};
 
 /**
  * Create a new interest
  */
-export const createInterest = async (req, res, next) => {}
+export const createInterest = async (req, res, next) => {
+  const name = req.body.name;
+  const priority = req.body.priority || 1;
+
+  const interest = await Interest.query().insert({
+    name,
+    priority,
+  });
+
+  res.status(201).json({ message: "Interest created", interest });
+};
 
 /**
  * Update an interest
- * 
+ *
  */
-export const updateInterest = async (req, res, next) => {}
+export const updateInterest = async (req, res, next) => {
+  const body = req.body;
+  const id = req.body.id;
+  if (!id) {
+    res.status(400).json({ message: "id is required" });
+    return;
+  }
+
+  const interest = await Interest.query().patchAndFetchById(body.id, body);
+
+  if (!interest) {
+    res.status(404).json({ message: "Interest not found" });
+    return;
+  }
+
+  res.json({ message: "Interest updated", interest });
+};
 
 /**
  * Delete an interest
  */
-export const deleteInterest = async (req, res, next) => {}
+export const deleteInterest = async (req, res, next) => {
+  const { id } = req.params;
+
+  const deletedCount = await Interest.query().deleteById(id);
+
+  if (deletedCount === 0) {
+    res.status(404).json({ message: "Interest not found" });
+    return;
+  }
+
+  res.json({ message: "Interest deleted" });
+};

@@ -1,9 +1,11 @@
 import express from "express";
 import { create } from "express-handlebars";
+import bodyParser from "body-parser";
+
 import { PORT, VIEWS_PATH } from "./consts.js";
 import HandlebarsHelpers from "./lib/HandlebarsHelpers.js";
 
-import { home, about, contact } from "./controllers/PageController.js";
+import { home, page } from "./controllers/PageController.js";
 import {
   getInterest,
   getInterests,
@@ -15,6 +17,12 @@ import { getUsers } from "./controllers/api/UserController.js";
 
 const app = express();
 app.use(express.static("public"));
+
+/**
+ * Body parser middleware
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * Handlebars Init
@@ -31,8 +39,7 @@ app.set("views", VIEWS_PATH);
  * App routes for pages that will be rendered in the browser.
  */
 app.get("/", home);
-app.get("/about-us", about);
-app.get("/contact", contact);
+app.get("/:slug", page);
 
 /**
  * API interest routes.
