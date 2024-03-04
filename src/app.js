@@ -12,7 +12,11 @@ import {
   updateInterest,
   deleteInterest,
 } from "./controllers/api/InterestController.js";
-import { getUser, getUsers } from "./controllers/api/UserController.js";
+import {
+  createUser,
+  getUser,
+  getUsers,
+} from "./controllers/api/UserController.js";
 
 const app = express();
 app.use(express.static("public"));
@@ -60,6 +64,7 @@ app.delete("/api/interest/:id", deleteInterest);
 
 app.get("/api/user", getUsers);
 app.get("/api/user/:id", getUser);
+app.post("/api/user", createUser);
 
 /**
  * API user routes.
