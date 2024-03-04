@@ -6,6 +6,7 @@ Model.knex(knex);
 
 // import related models
 import UserMeta from "./UserMeta.js";
+import Preference from "./Preference.js";
 
 export default class User extends Model {
   static get tableName() {
@@ -31,12 +32,20 @@ export default class User extends Model {
 
   static get relationMappings() {
     return {
-      awesometa: {
+      meta: {
         relation: Model.HasOneRelation,
         modelClass: UserMeta,
         join: {
           from: "users.id",
           to: "user_meta.user_id",
+        },
+      },
+      preference: {
+        relation: Model.HasOneRelation,
+        modelClass: Preference,
+        join: {
+          from: "users.id",
+          to: "preferences.user_id",
         },
       },
     };
