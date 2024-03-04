@@ -31,14 +31,14 @@ export default class User extends Model {
 
   static get relationMappings() {
     return {
-      meta: {
+      awesometa: {
         relation: Model.HasOneRelation,
         modelClass: UserMeta,
         join: {
           from: "users.id",
           to: "user_meta.user_id",
         },
-      }
+      },
     };
   }
 }
