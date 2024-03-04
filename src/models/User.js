@@ -4,6 +4,9 @@ import { Model } from "objection";
 // instantiate the model
 Model.knex(knex);
 
+// import related models
+import UserMeta from "./UserMeta.js";
+
 export default class User extends Model {
   static get tableName() {
     return "users";
@@ -23,6 +26,19 @@ export default class User extends Model {
         lastname: { type: "string", minLength: 1, maxLength: 255 },
         bio: { type: "string" }, // not "text" because that is not a valid data type in JSON Schema
       },
+    };
+  }
+
+  static get relationMappings() {
+    return {
+      meta: {
+        relation: Model.HasOneRelation,
+        modelClass: UserMeta,
+        join: {
+          from: "users.id",
+          to: "user_meta.user_id",
+        },
+      }
     };
   }
 }
