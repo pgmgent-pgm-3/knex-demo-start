@@ -7,6 +7,7 @@ Model.knex(knex);
 // import related models
 import UserMeta from "./UserMeta.js";
 import Preference from "./Preference.js";
+import Pet from "./Pet.js";
 
 export default class User extends Model {
   static get tableName() {
@@ -48,6 +49,14 @@ export default class User extends Model {
           to: "preferences.user_id",
         },
       },
+      pets: {
+        relation: Model.HasManyRelation,
+        modelClass: Pet,
+        join: {
+          from: "users.id",
+          to: "pets.user_id",
+        },
+      }
     };
   }
 }
