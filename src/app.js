@@ -20,6 +20,9 @@ import {
 
 import { getPet, getPets } from "./controllers/api/PetController.js";
 
+import * as PetController from "./controllers/PetController.js";
+import * as UserController from "./controllers/UserController.js";
+
 const app = express();
 app.use(express.static("public"));
 
