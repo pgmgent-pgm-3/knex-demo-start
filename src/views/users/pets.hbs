@@ -3,6 +3,8 @@
 <h2>Nieuw huisdier</h2>
 <div>
     <form action="/pets" method="POST">
+        <input type="hidden" name="method" value="POST">
+        <input type="hidden" name="user_id" value="{{user.id}}">
         <label for="name">Naam</label>
         <input type="text" id="name" name="name">
         <label for="species">Soort</label>
@@ -17,11 +19,18 @@
 <h2>Huisdieren</h2>
 {{#each pets}}
 <div>
-    <form action="/pets/{{id}}/update">
+    <form action="/pets" method="POST">
+        <input type="hidden" name="method" value="PUT">
+        <input type="hidden" name="id" value="{{id}}">
         <input type="text" name="name" value="{{name}}" placeholder="Naam">
         <input type="text" name="species" value="{{species}}" placeholder="Soort">
         <input type="number" name="age" value="{{age}}" placeholder="Leeftijd">
         <input type="submit" value="Bevestig">
+    </form>
+    <form action="/pets" method="POST">
+        <input type="hidden" name="method" value="DELETE">
+        <input type="hidden" name="id" value="{{id}}">
+        <input type="submit" value="Verwijder">
     </form>
 </div>
 {{/each}}

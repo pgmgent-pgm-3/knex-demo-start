@@ -61,9 +61,11 @@ app.get("/users/:id/pets", UserController.getUserPets); // Overzicht van huisdie
 app.get("/users/:id", UserController.show); // Toon details van een specifieke gebruiker (optioneel)
 
 // Huisdierenroutes
-app.post("/pets", PetController.create); // Maak een nieuw huisdier
-app.post("/pets/:id/update", PetController.update); // Werk een huisdier bij
-app.post("/pets/:id/delete", PetController.destroy); // Verwijder een huisdier
+// app.post("/pets", PetController.create); // Maak een nieuw huisdier
+// app.post("/pets/:id/update", PetController.update); // Werk een huisdier bij
+// app.post("/pets/:id/delete", PetController.destroy); // Verwijder een huisdier
+
+app.post("/pets", PetController.handlePost);
 
 // wildcard route
 // app.get("/about-us", about);

@@ -3,6 +3,7 @@
  */
 
 import User from "../../models/User.js";
+import Interest from "../../models/Interest.js";
 
 /**
  * Get a single user
@@ -26,6 +27,14 @@ export const getUsers = async (req, res, next) => {
 };
 
 export const exampleCreateUserWithInterests = async (req, res) => {
+  const interests = ["Shrimps", "Beer", "Frieten"];
+  const interestIds = await Interest.query()
+    .whereIn("name", interests)
+    .select("id");
+
+  console.log(interestIds);
+  return;
+
   const user = await User.query().insertGraph(
     [
       {
