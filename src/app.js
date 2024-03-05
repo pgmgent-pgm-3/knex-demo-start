@@ -14,6 +14,7 @@ import {
 } from "./controllers/api/InterestController.js";
 import {
   createUser,
+  exampleCreateUserWithInterests,
   getUser,
   getUsers,
 } from "./controllers/api/UserController.js";
@@ -81,6 +82,7 @@ app.delete("/api/interest/:id", deleteInterest);
 app.get("/api/user", getUsers);
 app.get("/api/user/:id", getUser);
 app.post("/api/user", createUser);
+app.get("/api/exampleInsert", exampleCreateUserWithInterests);
 
 app.get("/api/pet", getPets);
 app.get("/api/pet/:id", getPet);

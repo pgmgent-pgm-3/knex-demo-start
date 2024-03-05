@@ -25,6 +25,33 @@ export const getUsers = async (req, res, next) => {
   res.json(users);
 };
 
+export const exampleCreateUserWithInterests = async (req, res) => {
+  const user = await User.query().insertGraph(
+    [
+      {
+        firstname: "Firmin",
+        lastname: "Van Genechten",
+        bio: "Is the food not ready yet? I am hungry!",
+        interests: [
+          {
+            name: "Frieten",
+          },
+          {
+            // name: "Shrimps",
+            id: 21,
+          },
+          {
+            name: "Beer",
+          },
+        ],
+      },
+    ],
+    { relate: true }
+  );
+
+  res.json(user);
+};
+
 /**
  * Create a new user
  */
