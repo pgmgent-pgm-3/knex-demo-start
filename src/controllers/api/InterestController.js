@@ -9,7 +9,9 @@ import Interest from "../../models/Interest.js";
 export const getInterest = async (req, res, next) => {
   const id = req.params.id;
   //const interest = await Interest.query().where(id).first();
-  const interest = await Interest.query().findById(id);
+  const interest = await Interest.query()
+    .findById(id)
+    .withGraphFetched("users");
 
   res.status(200).json({
     interest,

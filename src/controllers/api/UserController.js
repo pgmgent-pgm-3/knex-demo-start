@@ -11,7 +11,7 @@ export const getUser = async (req, res, next) => {
   const id = req.params.id;
   const user = await User.query()
     .findById(id)
-    .withGraphFetched("[meta, preference, pets]");
+    .withGraphFetched("[meta, preference, pets, interests]");
 
   res.json(user);
 };
