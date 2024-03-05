@@ -18,6 +18,8 @@ import {
   getUsers,
 } from "./controllers/api/UserController.js";
 
+import { getPet, getPets } from "./controllers/api/PetController.js";
+
 const app = express();
 app.use(express.static("public"));
 
@@ -49,6 +51,17 @@ app.set("views", VIEWS_PATH);
 // app.get("/", home);
 app.get("/", page);
 
+// Gebruikersroutes
+app.get("/users", UserController.index); // Overzicht van alle gebruikers
+app.get("/users/:id/pets", UserController.getUserPets); // Overzicht van huisdieren van een specifieke gebruiker
+app.get("/users/:id", UserController.show); // Toon details van een specifieke gebruiker (optioneel)
+
+// Huisdierenroutes
+app.post("/pets", PetController.create); // Maak een nieuw huisdier
+app.post("/pets/:id/update", PetController.update); // Werk een huisdier bij
+app.post("/pets/:id/delete", PetController.destroy); // Verwijder een huisdier
+
+// wildcard route
 // app.get("/about-us", about);
 // app.get("/contact-us", contact);
 app.get("/:slug", page); // shortcut for all pages, except the homepage
@@ -65,6 +78,9 @@ app.delete("/api/interest/:id", deleteInterest);
 app.get("/api/user", getUsers);
 app.get("/api/user/:id", getUser);
 app.post("/api/user", createUser);
+
+app.get("/api/pet", getPets);
+app.get("/api/pet/:id", getPet);
 
 /**
  * API user routes.

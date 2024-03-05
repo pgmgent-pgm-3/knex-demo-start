@@ -1,0 +1,8 @@
+<ul>
+{{#each users}}
+    <li style="margin-bottom: 1rem;">
+        <strong>{{id}} - {{firstname}} {{ lastname }}</strong> <br>
+        <a href="/users/{{id}}/pets">Bekijk huisdieren</a>
+    </li>
+{{/each}}
+</ul>
