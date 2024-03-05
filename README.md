@@ -10,7 +10,20 @@ DATABASE_NAME=knex-demo.sqlite3
 NODE_ENV=development
 ```
 
-## Migrations
+## Working with the database
+
+You have two options for working with the database. 
+- Or you rename knex-demo-example-db.sqlite3 to knex-demo.sqlite3.
+- Start with new database, by running the migrations and seeds
+
+## Option 1: Using the database provided
+
+**rename knex-demo-example-db.sqlite3 to knex-demo.sqlite3.**  
+*BEST OPTION when starting with the project.*
+
+## Option 2: Creating a new database
+
+### Migrations
 
 Please run the following command to create the database and tables:
 
@@ -18,7 +31,7 @@ Please run the following command to create the database and tables:
 npx knex migrate:latest
 ```
 
-## Seeding
+### Seeding
 
 At this point, no seeds have been created. 
 You could add some data by editting the database with DB Browser for SQLite.
