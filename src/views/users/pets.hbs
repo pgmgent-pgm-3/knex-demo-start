@@ -19,7 +19,7 @@
 <h2>Huisdieren</h2>
 {{#each pets}}
 <div>
-    <form action="/pets/update" method="POST">
+    <form action="/pets" method="POST">
         <input type="hidden" name="method" value="PUT">
         <input type="hidden" name="id" value="{{id}}">
         <input type="text" name="name" value="{{name}}" placeholder="Naam">
@@ -29,7 +29,7 @@
             Update
         </button>
     </form>
-    <form action="/pets/delete" method="POST">
+    <form action="/pets" method="POST">
         <input type="hidden" name="method" value="DELETE">
         <input type="hidden" name="id" value="{{id}}">
         <input type="submit" value="Verwijder">
